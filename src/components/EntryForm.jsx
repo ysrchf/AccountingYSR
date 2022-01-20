@@ -1,8 +1,9 @@
 import { Field, Form, Formik } from "formik"
+import { useCallback } from "react"
 import * as Yup from "yup"
-//import { useCallback } from "react"
+import Input from "./Input"
 
-const EntryForm = () => {
+const EntryForm = (props) => {
   const displayingErrorMessagesSchema = Yup.object().shape({
     description: Yup.string().required("Le champ est requis !"),
     price: Yup.number()
@@ -15,44 +16,41 @@ const EntryForm = () => {
       .required("Le champ est requis !"),
   })
 
-  //const { onSubmit } = props
-  //const handleFormSubmit = useCallback(
-  /*({ description, price }, { resetForm }) => {
+  const { onSubmit } = props
+  const handleFormSubmit = useCallback(
+    ({ description, price }, { resetForm }) => {
       onSubmit({ description, price })
       resetForm()
 
       return true
     },
     [onSubmit]
-  )*/
+  )
+
   return (
     <Formik
       initialValues={{ description: "", price: "0" }}
       validationSchema={displayingErrorMessagesSchema}
-      onSubmit={(values) => {
-        alert(JSON.stringify(values, null, 2))
-      }}
+      onSubmit={handleFormSubmit}
     >
-      {({ handleSubmit, isSubmitting, errors }) => (
+      {({ handleSubmit, errors }) => (
         <Form onSubmit={handleSubmit}>
           <label>
             Description:
             <Field
               name="description"
               placeholder="Enter a description"
-              as="textarea"
+              as={Input}
             />
             <div className="errorField">{errors.description}</div>
           </label>
           <br />
           <label>
             Price:
-            <Field name="price" placeholder="Enter the amount" />
+            <Field name="price" placeholder="Enter the amount" as={Input} />
             <div className="errorField">{errors.price}</div>
           </label>
-          <button type="submit" disabled={isSubmitting}>
-            Add Entry
-          </button>
+          <button type="submit">Add Entry</button>
         </Form>
       )}
     </Formik>

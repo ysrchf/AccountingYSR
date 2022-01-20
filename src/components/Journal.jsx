@@ -1,4 +1,9 @@
+import { useContext } from "react"
+import AppContext from "./AppContext"
+
 const Journal = () => {
+  const { amountList } = useContext(AppContext)
+  
   return (
     <table>
       <thead>
@@ -8,18 +13,32 @@ const Journal = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>data +</td>
-          <td>data -</td>
-        </tr>
+        {amountList.map(({ id, description, price }) => (
+          <tr key={id}>
+            {price > 0 ? (
+              <td>
+                <p>{price}</p>
+                <p>{description}</p>
+              </td>
+            ) : (
+              <>
+                <td></td>
+                <td>
+                  <p>{price}</p>
+                  <p>{description}</p>
+                </td>
+              </>
+            )}
+          </tr>
+        ))}
         <tr>
           <td>total +</td>
           <td>total -</td>
         </tr>
+        <tr>
+          <td>Result</td>
+        </tr>
       </tbody>
-      <tfoot>
-        <tr>Result</tr>
-      </tfoot>
     </table>
   )
 }

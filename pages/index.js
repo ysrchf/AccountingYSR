@@ -1,13 +1,14 @@
+import { AppContextProvider } from "../src/components/AppContext"
 import Journal from "../src/components/Journal"
-
 import Layout from "../src/components/Layout"
+
 const Home = () => {
   return (
-    <div>
-      <Layout>
+    <Layout>
+      <AppContextProvider>
         <Journal />
-      </Layout>
-    </div>
+      </AppContextProvider>
+    </Layout>
   )
 }
 export default Home

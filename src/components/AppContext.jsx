@@ -1,31 +1,36 @@
-import { createContext, useCallback, useState } from "react"
+import { createContext, useState } from "react"
 
 const AppContext = createContext({})
 
-const AppContextProvider = (props) => {
-  const [lastEntryId, setLastEntryId] = useState(0)
-  const [entryList, setEntryList] = useState([])
-
-  const addEntry = useCallback(
-    (entry) => {
-      setLastEntryId((currentLastEntryId) => currentLastEntryId + 1)
-      setEntryList((currentEntryList) => [
-        ...currentEntryList,
-        {
-          id: lastEntryId + 1,
-          ...entry,
-        },
-      ])
+export const AppContextProvider = (props) => {
+  const [amountList, setAmounts] = useState([
+    {
+      id: 1,
+      price: 1200,
+      description: "Test 1",
     },
-    [lastEntryId]
-  )
- 
+    {
+      id: 2,
+      price: -200,
+      description: "Test 2",
+    },
+    {
+      id: 3,
+      price: -400,
+      description: "Test 3",
+    },
+    {
+      id: 4,
+      price: 600,
+      description: "Test 4",
+    },
+  ])
+
   return (
     <AppContext.Provider
       {...props}
       value={{
-        entryList: entryList || [],
-        addEntry,
+        amountList,
       }}
     />
   )
