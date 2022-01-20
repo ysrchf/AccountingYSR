@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createContext, useState } from "react"
 
 const AppContext = createContext({})
