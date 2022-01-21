@@ -4,12 +4,12 @@ import AppContext, { AppContextProvider } from "../src/components/AppContext"
 import { useContext } from "react"
 
 const Entry = () => {
-  const { addEntry } = useContext(AppContext)
+  const { addAmountList } = useContext(AppContext)
 
   return (
     <Layout>
       <AppContextProvider>
-        <EntryForm onSubmit={addEntry} />
+        <EntryForm addAmountList={addAmountList} />
       </AppContextProvider>
     </Layout>
   )

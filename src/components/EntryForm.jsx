@@ -1,9 +1,12 @@
+/* eslint-disable no-console */
 import { Field, Form, Formik } from "formik"
 import { useCallback } from "react"
+import { useContext } from "react/cjs/react.development"
 import * as Yup from "yup"
+import AppContext from "./AppContext"
 import Input from "./Input"
 
-const EntryForm = (props) => {
+const EntryForm = () => {
   const displayingErrorMessagesSchema = Yup.object().shape({
     description: Yup.string().required("Le champ est requis !"),
     price: Yup.number()
@@ -16,15 +19,18 @@ const EntryForm = (props) => {
       .required("Le champ est requis !"),
   })
 
-  const { onSubmit } = props
+  const { addAmountList } = useContext(AppContext)
   const handleFormSubmit = useCallback(
-    ({ description, price }, { resetForm }) => {
-      onSubmit({ description, price })
+    (values, { resetForm }) => {
+      addAmountList({
+        description: values.description,
+        price: parseInt(values.price),
+      })
       resetForm()
 
       return true
     },
-    [onSubmit]
+    [addAmountList]
   )
 
   return (
@@ -33,8 +39,8 @@ const EntryForm = (props) => {
       validationSchema={displayingErrorMessagesSchema}
       onSubmit={handleFormSubmit}
     >
-      {({ handleSubmit, errors }) => (
-        <Form onSubmit={handleSubmit}>
+      {({ errors }) => (
+        <Form>
           <label>
             Description:
             <Field
