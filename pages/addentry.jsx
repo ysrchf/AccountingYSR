@@ -1,15 +1,12 @@
 import EntryForm from "../src/components/EntryForm"
 import Layout from "../src/components/Layout"
-import AppContext, { AppContextProvider } from "../src/components/AppContext"
-import { useContext } from "react"
+import { AppContextProvider } from "../src/components/AppContext"
 
 const Entry = () => {
-  const { addAmountList } = useContext(AppContext)
-
   return (
     <Layout>
       <AppContextProvider>
-        <EntryForm addAmountList={addAmountList} />
+        <EntryForm />
       </AppContextProvider>
     </Layout>
   )

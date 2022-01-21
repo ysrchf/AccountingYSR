@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Field, Form, Formik } from "formik"
 import { useCallback } from "react"
 import { useContext } from "react/cjs/react.development"

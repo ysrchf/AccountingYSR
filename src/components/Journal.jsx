@@ -1,11 +1,8 @@
-/* eslint-disable no-console */
-
 import { useContext } from "react/cjs/react.development"
 import AppContext from "./AppContext"
 
 const Journal = () => {
   const { amountList, totIncome, totOutcome } = useContext(AppContext)
-  console.log(amountList)
 
   return (
     <table>

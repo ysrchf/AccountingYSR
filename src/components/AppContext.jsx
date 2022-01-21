@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 import { createContext, useCallback, useEffect, useState } from "react"
 
 const AppContext = createContext({})
