@@ -5,8 +5,8 @@ const Layout = (props) => {
 
   return (
     <div {...otherProps}>
-      <Header />
-      <main>{children}</main>
+      <Header content={props.content} />
+      <main className="w-3/5 mx-auto ">{children}</main>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import Layout from "../src/components/Layout"
 
 const Home = () => {
   return (
-    <Layout>
+    <Layout content="Dashboard">
       <AppContextProvider>
         <Journal />
       </AppContextProvider>

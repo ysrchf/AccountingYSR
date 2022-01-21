@@ -4,7 +4,7 @@ import { AppContextProvider } from "../src/components/AppContext"
 
 const Entry = () => {
   return (
-    <Layout>
+    <Layout content="Add Entry">
       <AppContextProvider>
         <EntryForm />
       </AppContextProvider>
