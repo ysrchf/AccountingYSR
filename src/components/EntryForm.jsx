@@ -4,19 +4,21 @@ import * as Yup from "yup"
 import AppContext from "./AppContext.jsx"
 
 const EntryForm = () => {
+  const { addAmountList } = useContext(AppContext)
+
   const displayingErrorMessagesSchema = Yup.object().shape({
-    description: Yup.string().required("This field is required."),
+    description: Yup.string()
+      .max(15, "The description is too long, keep it short. (<15 characters)")
+      .required("This field is required."),
     amount: Yup.number()
       .typeError("Enter a number please.")
       .test(
-        "Not equal to 0.",
+        "Amount zero ?",
         "The amount should be more than 0.",
         (amount) => amount != 0
       )
       .required("This field is required."),
   })
-
-  const { addAmountList } = useContext(AppContext)
 
   const handleFormSubmit = useCallback(
     (values, { resetForm }) => {

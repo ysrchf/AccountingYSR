@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const Header = (props) => {
   return (
-    <header className="sticky top-0 h-20 px-8 mb-10 flex items-center justify-between bg-black text-white drop-shadow-md">
+    <header className="sticky top-0 z-40 h-20 px-8 mb-10 flex items-center justify-between bg-black text-white drop-shadow-md">
       <h1 className="font-bold text-3xl ">{props.content}</h1>
       <nav>
         <Link href="/">

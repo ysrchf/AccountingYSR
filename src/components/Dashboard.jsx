@@ -5,12 +5,16 @@ const Journal = () => {
   const { amountList, totIncome, totOutcome } = useContext(AppContext)
 
   return (
-    <table className="w-full mb-5">
-      <thead className="bg-black text-white drop-shadow-md">
+    <table className="w-full mb-5 relative z-20">
+      <thead className="bg-black text-white drop-shadow-lg">
         <tr>
-          <th className="border-2 w-1/2 p-2">INCOMING</th>
+          <th className="border-2 border-black border-collapse w-1/2 p-2">
+            INCOMING
+          </th>
 
-          <th className="border-2 w-1/2 p-2">OUTGOING</th>
+          <th className="border-2 border-black border-collapse w-1/2 p-2">
+            OUTGOING
+          </th>
         </tr>
       </thead>
       <tbody>
