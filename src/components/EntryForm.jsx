@@ -1,8 +1,7 @@
 import { Field, Form, Formik } from "formik"
-import { useCallback } from "react"
-import { useContext } from "react/cjs/react.development"
+import { useCallback, useContext } from "react"
 import * as Yup from "yup"
-import AppContext from "./AppContext"
+import AppContext from "./AppContext.jsx"
 
 const EntryForm = () => {
   const displayingErrorMessagesSchema = Yup.object().shape({
@@ -18,6 +17,7 @@ const EntryForm = () => {
   })
 
   const { addAmountList } = useContext(AppContext)
+
   const handleFormSubmit = useCallback(
     (values, { resetForm }) => {
       addAmountList({

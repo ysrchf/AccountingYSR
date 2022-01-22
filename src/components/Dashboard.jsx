@@ -1,4 +1,4 @@
-import { useContext } from "react/cjs/react.development"
+import { useContext } from "react"
 import AppContext from "./AppContext"
 
 const Journal = () => {
