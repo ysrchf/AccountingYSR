@@ -5,8 +5,8 @@ const Journal = () => {
   const { amountList, totIncome, totOutcome } = useContext(AppContext)
 
   return (
-    <table className="w-full">
-      <thead>
+    <table className="w-full mb-5">
+      <thead className="bg-black text-white drop-shadow-md">
         <tr>
           <th className="border-2 w-1/2 p-2">INCOMING</th>
 
@@ -14,16 +14,16 @@ const Journal = () => {
         </tr>
       </thead>
       <tbody>
-        {amountList.map(({ description, price }, id) => (
+        {amountList.map(({ description, amount }, id) => (
           <tr
             key={id}
             className={`${id % 2 === 0 ? "bg-gray-100" : "bg-white"}`}
           >
-            {price > 0 ? (
+            {amount > 0 ? (
               <>
                 <td className="border-2 w-1/2 p-2">
-                  <p className="text-green-400 font-medium">+{price}$</p>
-                  <p className="break-all italic ">{description}</p>
+                  <p className="text-green-400 font-medium">+{amount}$</p>
+                  <p className="break-all italic pl-5">{description}</p>
                 </td>
                 <td className="border-2 w-1/2 p-2"></td>
               </>
@@ -31,34 +31,34 @@ const Journal = () => {
               <>
                 <td className="border-2 w-1/2 p-2"></td>
                 <td className="border-2 w-1/2 p-2">
-                  <p className="text-red-400 font-medium">{price}$</p>
-                  <p className="break-all italic">{description}</p>
+                  <p className="text-red-400 font-medium">{amount}$</p>
+                  <p className="break-all italic pl-5">{description}</p>
                 </td>
               </>
             )}
           </tr>
         ))}
         <tr>
-          <td className="border-2 w-1/2 p-2">
-            <p>total INCOME:</p>
-            <p className="text-green-400 font-bold"> +{totIncome}$</p>
+          <td className="border-2 w-1/2 p-2 font-bold text-right">
+            <p>Total Income:</p>
+            <p className="text-green-400"> +{totIncome}$</p>
           </td>
-          <td className="border-2 w-1/2 p-2">
-            <p>total Outcome:</p>
-            <p className="text-red-400 font-bold">{totOutcome}$</p>
+          <td className="border-2 w-1/2 p-2 font-bold text-right">
+            <p>Total Outcome:</p>
+            <p className="text-red-400">{totOutcome}$</p>
           </td>
         </tr>
         <tr>
-          <td className="border-2 w-full p-2" colSpan="2">
-            <p>TOTAL:</p>
+          <td className=" w-full border-2 p-2 font-bold text-right" colSpan="2">
+            <p className="w-full underline underline-offset-1 decoration-dashed">
+              TOTAL:
+            </p>
             <p
               className={`${
-                totIncome + totOutcome > 0
-                  ? "text-green-400 font-bold"
-                  : "text-red-400 font-bold"
+                totIncome + totOutcome > 0 ? "text-green-400" : "text-red-400"
               }`}
             >
-              {totIncome + totOutcome} $
+              {totIncome + totOutcome}$
             </p>
           </td>
         </tr>

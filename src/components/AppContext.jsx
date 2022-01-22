@@ -31,9 +31,9 @@ export const AppContextProvider = (props) => {
   }, [])
 
   useEffect(() => {
-    let totIncome = amountList.reduce((previous, current) => {
-      if (current.price > 0) {
-        return Number(previous) + Number(current.price)
+    const totIncome = amountList.reduce((previous, current) => {
+      if (current.amount > 0) {
+        return Number(previous) + Number(current.amount)
       }
 
       return Number(previous) + 0
@@ -43,9 +43,9 @@ export const AppContextProvider = (props) => {
   }, [amountList])
 
   useEffect(() => {
-    let totOutcome = amountList.reduce((previous, current) => {
-      if (current.price < 0) {
-        return Number(previous) + Number(current.price)
+    const totOutcome = amountList.reduce((previous, current) => {
+      if (current.amount < 0) {
+        return Number(previous) + Number(current.amount)
       }
 
       return Number(previous) + 0

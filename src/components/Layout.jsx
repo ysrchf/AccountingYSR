@@ -5,7 +5,7 @@ const Layout = (props) => {
 
   return (
     <div {...otherProps}>
-      <Header content={props.content} />
+      <Header className="sticky top-0" content={props.content} />
       <main className="w-3/5 mx-auto ">{children}</main>
     </div>
   )

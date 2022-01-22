@@ -6,15 +6,15 @@ import AppContext from "./AppContext"
 
 const EntryForm = () => {
   const displayingErrorMessagesSchema = Yup.object().shape({
-    description: Yup.string().required("Le champ est requis !"),
-    price: Yup.number()
-      .typeError("Le champ doit être un nombre !")
+    description: Yup.string().required("This field is required."),
+    amount: Yup.number()
+      .typeError("Enter a number please.")
       .test(
-        "Is not equal to 0 ?",
-        "La valeur ne doit pas être égale à 0 !",
-        (price) => price != 0
+        "Not equal to 0.",
+        "The amount should be more than 0.",
+        (amount) => amount != 0
       )
-      .required("Le champ est requis !"),
+      .required("This field is required."),
   })
 
   const { addAmountList } = useContext(AppContext)
@@ -22,7 +22,7 @@ const EntryForm = () => {
     (values, { resetForm }) => {
       addAmountList({
         description: values.description,
-        price: parseInt(values.price),
+        amount: Number(values.amount),
       })
       resetForm()
 
@@ -33,23 +33,23 @@ const EntryForm = () => {
 
   return (
     <Formik
-      initialValues={{ description: "", price: "0" }}
+      initialValues={{ description: "", amount: "0" }}
       validationSchema={displayingErrorMessagesSchema}
       onSubmit={handleFormSubmit}
     >
       {({ errors }) => (
-        <Form className="bg-gray-100 w-full">
+        <Form className="bg-gray-100 w-full border-2 ">
           <label className="flex flex-col p-2 font-bold">
             Description:
             <Field
               name="description"
               placeholder="Enter a description"
-              className="h-20 p-2 mb-2 mt-2"
+              className="h-20 p-2 mb-2 mt-2 border-2"
               as="textarea"
             />
             <div
               className={`${
-                errors.price
+                errors.description
                   ? "popup text-red-600 bg-red-200 rounded-md w-1/3 p-2 font-medium"
                   : null
               }`}
@@ -59,25 +59,25 @@ const EntryForm = () => {
           </label>
           <br />
           <label className="flex flex-col p-2 font-bold">
-            Price:
+            Amount:
             <Field
-              className="p-2 mb-2 mt-2"
-              name="price"
+              className="p-2 mb-2 mt-2 border-2"
+              name="amount"
               placeholder="Enter the amount"
             />
             <div
               className={`${
-                errors.price
+                errors.amount
                   ? "popup text-red-600 bg-red-200 rounded-md w-1/3 p-2 font-medium"
                   : null
               }`}
             >
-              {errors.price}
+              {errors.amount}
             </div>
           </label>
           <button
             type="submit"
-            className="p-2 w-full px-3 py-2 bg-black text-white font-medium"
+            className="p-2 w-full px-3 py-2 bg-black text-white hover:bg-gray-700 font-medium drop-shadow-md"
           >
             Add Entry
           </button>
