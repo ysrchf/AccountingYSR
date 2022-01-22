@@ -1,5 +1,4 @@
 
-<!-- prettier-ignore -->
 
 This is my Accounting App, hope you like it :D
 

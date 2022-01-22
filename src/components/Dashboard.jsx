@@ -23,7 +23,9 @@ const Journal = () => {
               <>
                 <td className="border-2 w-1/2 p-2">
                   <p className="text-green-400 font-medium">+{amount}$</p>
-                  <p className="break-all italic pl-5">{description}</p>
+                  <p className="break-all capitalize italic pl-5">
+                    {description}
+                  </p>
                 </td>
                 <td className="border-2 w-1/2 p-2"></td>
               </>
@@ -32,7 +34,9 @@ const Journal = () => {
                 <td className="border-2 w-1/2 p-2"></td>
                 <td className="border-2 w-1/2 p-2">
                   <p className="text-red-400 font-medium">{amount}$</p>
-                  <p className="break-all italic pl-5">{description}</p>
+                  <p className="break-all capitalize italic pl-5">
+                    {description}
+                  </p>
                 </td>
               </>
             )}
