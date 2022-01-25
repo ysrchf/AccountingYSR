@@ -4,6 +4,11 @@ import AppContext from "./AppContext"
 const Journal = () => {
   const { amountList, totIncome, totOutcome } = useContext(AppContext)
 
+  const clearTable = () => {
+    localStorage.clear()
+    location.reload()
+  }
+
   return (
     <table className="w-full mb-5 relative z-20">
       <thead className="bg-black text-white drop-shadow-lg">
@@ -68,6 +73,16 @@ const Journal = () => {
             >
               {totIncome + totOutcome}$
             </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button
+              onClick={clearTable}
+              className="margin-2 p-2 margin-black bg-black font-bold text-white hover:bg-white hover:text-black"
+            >
+              CLEAR ALL
+            </button>
           </td>
         </tr>
       </tbody>

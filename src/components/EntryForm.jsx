@@ -40,7 +40,7 @@ const EntryForm = () => {
       onSubmit={handleFormSubmit}
     >
       {({ errors }) => (
-        <Form className="bg-gray-100 w-full border-2 ">
+        <Form className="bg-gray-100 w-full border-2">
           <label className="flex flex-col p-2 font-bold">
             Description:
             <Field

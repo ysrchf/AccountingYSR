@@ -7,14 +7,15 @@ const save = (amountList) => {
 }
 
 export const AppContextProvider = (props) => {
-  const [amountList, setAmounts] = useState([])
+  const [amountList, setAmountList] = useState([])
   const [loaded, setLoaded] = useState(false)
   const [totIncome, setTotIncome] = useState(0)
   const [totOutcome, setTotOutcome] = useState(0)
 
   const addAmountList = useCallback((amount) => {
-    setAmounts((currentAmountList) => [...currentAmountList, { ...amount }])
+    setAmountList((currentAmountList) => [...currentAmountList, { ...amount }])
   }, [])
+
   useEffect(() => {
     const amount = localStorage.getItem("amountList")
 
@@ -26,7 +27,7 @@ export const AppContextProvider = (props) => {
 
     const amountList = JSON.parse(amount)
 
-    setAmounts(amountList)
+    setAmountList(amountList)
     setLoaded(true)
   }, [])
 
