@@ -4,11 +4,11 @@ import Layout from "../src/components/Layout"
 
 const Home = () => {
   return (
-    <Layout content="Dashboard">
-      <AppContextProvider>
+    <AppContextProvider>
+      <Layout content="Dashboard">
         <Dashboard />
-      </AppContextProvider>
-    </Layout>
+      </Layout>
+    </AppContextProvider>
   )
 }
 export default Home

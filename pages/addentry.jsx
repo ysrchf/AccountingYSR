@@ -4,11 +4,11 @@ import { AppContextProvider } from "../src/components/AppContext"
 
 const Entry = () => {
   return (
-    <Layout content="Add Entry">
-      <AppContextProvider>
+    <AppContextProvider>
+      <Layout content="Add Entry">
         <EntryForm />
-      </AppContextProvider>
-    </Layout>
+      </Layout>
+    </AppContextProvider>
   )
 }
 export default Entry
